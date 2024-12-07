@@ -11,8 +11,8 @@ servoPin.freq(50)
 
 def servo(degrees):
     # limit degrees beteen 0 and 180
-    if degrees > 115: degrees=115
-    if degrees < 65: degrees=65
+    if degrees > 180: degrees=180
+    if degrees < 0: degrees=0
     # set max and min duty
     maxDuty=9000
     minDuty=1000
@@ -20,15 +20,3 @@ def servo(degrees):
     newDuty=minDuty+(maxDuty-minDuty)*(degrees/180)
     # servo PWM value is set
     servoPin.duty_u16(int(newDuty))
-#
-#while True:
-  # start increasing loop
-#  for degree in range(0,180,1):
-#    servo(degree)
-#    sleep(0.001)
-    #print("increasing -- "+str(degree))
-  # start decreasing loop
-#  for degree in range(180, 0, -1):
-#    servo(degree)
-#    sleep(0.001)
-    #print("decreasing -- "+str(degree))

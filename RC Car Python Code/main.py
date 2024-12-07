@@ -61,8 +61,6 @@ def on_rx(data):
         timer = int(trimmedDataString.split('\\r')[0])
         
         motor.forwardFor(timer)
-        
-        sleep(timer)
         led2.value(0)
 
         
@@ -74,34 +72,19 @@ def on_rx(data):
         timer = int(trimmedDataString.split('\\r')[0])
         
         motor.backwardFor(timer)
-        
-        sleep(timer)
         led2.value(0)
         
     if "left" in data:
-        led2.value(100)
-
-        dataString = str(data)
-        trimmedDataString = str(dataString.split(',')[1])
-        degree += int(trimmedDataString.split('\\r')[0])
         
-        servo(degree)
-        
-        led2.value(0)
+        servo(55)
         
         
-    if data == b'right\r\n':
-        led2.value(100)
-
-        dataString = str(data)
-        trimmedDataString = str(dataString.split(',')[1])
-        degree -= int(trimmedDataString.split('\\r')[0])
         
-        servo(degree)
+    if "right" in data:
+        servo(125)
         
     if data == b'straight\r\n':
-        degree = 90
-        servo(degree)
+        servo(90)
         
 # Start an infinite loop
 while True:
